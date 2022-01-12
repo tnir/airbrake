@@ -39,7 +39,7 @@ module Airbrake
 
             # Skip "catch-all" routes such as:
             #   get '*path => 'pages#about'
-            next if route.path.ast.nil? && route.glob?
+            next if route.nil? && route.glob?
 
             path =
               if engine == ::Rails.application
