@@ -17,7 +17,6 @@ module Airbrake
 
       def initialize(*args)
         @event = ActiveSupport::Notifications::Event.new(*args)
-        @rails_7_or_greater = ::Rails::VERSION::MAJOR >= 7
       end
 
       def method
@@ -54,7 +53,11 @@ module Airbrake
         #
         # Relevant commit:
         # https://github.com/rails/rails/commit/81d0dc90becfe0b8e7f7f26beb66c25d84b8ec7f
-        @rails_7_or_greater ? @event.time / MILLISECOND : @event.time
+        #
+        # Ensure this conversion is applied exclusively for Rails 7.0
+        return @event.time / MILLISECOND if rails_7_0?
+
+        @event.time
       end
 
       def groups
@@ -87,6 +90,10 @@ module Airbrake
 
       def duration
         @event.duration
+      end
+
+      def rails_7_0?
+        ::Rails::VERSION::MAJOR == 7 && ::Rails::VERSION::MINOR == 0
       end
     end
   end

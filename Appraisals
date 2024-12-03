@@ -75,6 +75,48 @@ if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.7.0')
   end
 end
 
+if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.7.0')
+  appraise 'rails-7.1' do
+    gem 'rails', '~> 7.1.0'
+    gem 'warden', '~> 1.2.6'
+    gem 'rack', '~> 2.0'
+
+    gem 'activerecord-jdbcsqlite3-adapter',
+        github: 'jruby/activerecord-jdbc-adapter',
+        branch: '61-stable',
+        platforms: :jruby
+    gem 'sqlite3', '~> 1.4', platforms: %i[mri rbx]
+
+    gem 'resque', '~> 1.26'
+    gem 'resque_spec', github: 'airbrake/resque_spec'
+
+    gem 'delayed', '~> 0.4'
+
+    gem 'mime-types', '~> 3.1'
+  end
+end
+
+if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.1.0')
+  appraise 'rails-7.2' do
+    gem 'rails', '~> 7.2.0'
+    gem 'warden', '~> 1.2.6'
+    gem 'rack', '~> 2.0'
+
+    gem 'activerecord-jdbcsqlite3-adapter',
+        github: 'jruby/activerecord-jdbc-adapter',
+        branch: '61-stable',
+        platforms: :jruby
+    gem 'sqlite3', '~> 1.4', platforms: %i[mri rbx]
+
+    gem 'resque', '~> 1.26'
+    gem 'resque_spec', github: 'airbrake/resque_spec'
+
+    gem 'delayed', '~> 0.4'
+
+    gem 'mime-types', '~> 3.1'
+  end
+end
+
 appraise 'sinatra' do
   gem 'sinatra', '~> 2'
   gem 'warden', '~> 1.2.6'
