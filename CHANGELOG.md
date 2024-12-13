@@ -3,6 +3,10 @@ Airbrake Changelog
 
 ### master
 
+### [v13.0.5][v13.0.5] (December 12, 2024)
+* Fixed time conversion error for Rails 7.1 and up
+  ([#1262](https://github.com/airbrake/airbrake/pull/1262))
+
 ### [v13.0.4][v13.0.4] (November 27, 2023)
 
 * Add support for sidekiq 7 ([#1245](https://github.com/airbrake/airbrake/pull/1245))
